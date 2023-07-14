@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_2/screens/account/controller/account_controller.dart';
-import 'package:get/get.dart';
+import 'package:flutter_application_2/screens/account/controller/homescreen_details.dart';
 
 class HomeScreen extends StatefulWidget {
   static const router = '/HomeScreen';
@@ -11,143 +10,141 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void addnewincomeandexpenses() {
-    showDialog(
-        context: context,
-        builder: (context) => SimpleDialog(
-              children: <Widget>[
-                TextButton(
-                  onPressed: addnewExpenses,
-                  child: Text(
-                    'Add Expenses',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: TextButton.styleFrom(
-                    primary: Colors.green,
-                  ),
-                ),
-                
-                TextButton(
-                  onPressed: addnewExpenses,
-                  child: Text('Add income',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  style: TextButton.styleFrom(
-                    primary: Colors.redAccent,
-                    
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Cancel',
-                    style: TextStyle(fontSize: 17),
-                  ),
-                ),
-                
-              ],
-            ));
-  }
+  bool _isIncome = false;
+  final _formKey = GlobalKey<FormState>();
+  final amount = TextEditingController();
+  final name = TextEditingController();
 
-  void addnewIncome() {
+  void newTransaction() {
     showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-              title: const Text('Add new income'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                    ),
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, setState) {
+              return AlertDialog(
+                title: const Text(
+                  'Add new transaction',
+                  style: TextStyle(letterSpacing: 2),
+                ),
+                content: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const Text(
+                            'Expenses',
+                            style: TextStyle(color: Colors.red),
+                          ),
+                          Switch(
+                            value: _isIncome,
+                            onChanged: (newValue) {
+                              setState(() {
+                                _isIncome = newValue;
+                              });
+                            },
+                          ),
+                          const Text(
+                            'Income',
+                            style: TextStyle(color: Colors.green),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: TextField(
+                              decoration: const InputDecoration(
+                                hintText: 'Title',
+                              ),
+                              controller: name,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Form(
+                              key: _formKey,
+                              child: TextFormField(
+                                decoration: const InputDecoration(
+                                  hintText: 'Amount',
+                                ),
+                                validator: (text) {
+                                  if (text == null || text.isEmpty) {
+                                    return 'Enter an amount';
+                                  }
+                                  return null;
+                                },
+                                controller: amount,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Amount',
-                    ),
+                ),
+                actions: <Widget>[
+                  MaterialButton(
+                    color: Colors.redAccent,
+                    child: const Text('Cancel',
+                        style: TextStyle(color: Colors.white)),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      name.clear();
+                      amount.clear();
+                    },
                   ),
+                  MaterialButton(
+                    color: Colors.green,
+                    child: const Text('Enter',
+                        style: TextStyle(color: Colors.white)),
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.of(context).pop();
+                        name.clear();
+                        amount.clear();
+                      }
+                    },
+                  )
                 ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Save'),
-                ),
-              ],
-            ));
+              );
+            },
+          );
+        });
   }
-
-  void addnewExpenses() {
-    showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-              title: const Text('Add new expenses'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                    ),
-                  ),
-                  TextFormField(
-                    decoration: const InputDecoration(
-                      labelText: 'Amount',
-                    ),
-                  ),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  child: const Text('Save'),
-                ),
-              ],
-            ));
-  }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: addnewincomeandexpenses,
-          backgroundColor: Colors.green,
-          child: const Icon(Icons.add_card),
-          
-          ),
-        body: GetBuilder<Account>(
-          builder: (controller) {
-            controller.getdata();
-            return Container(
-                height: Get.height,
-                width: Get.width,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(20, Get.height * 0.06, 10, 20),
-                  child: Text('Hello, ${controller.myUsername}',
-                      style: const TextStyle(
-                          fontSize: 25, fontWeight: FontWeight.bold)),
-                ));
-          },
+        backgroundColor: Colors.white,
+        body: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(children: [
+            const Homescreentop(),
+            const Homescreenbottom(
+              balance: ' 10,000',
+              expenses: ' 5,000',
+              income: ' 15,000',
+            ),
+            Expanded(
+                child: Container(
+              child: const Center(
+                child: Text('No Transaction History'),
+              ),
+            )),
+            Bottombutton(
+              function: newTransaction,
+            ),
+          ]),
         ));
   }
 }
