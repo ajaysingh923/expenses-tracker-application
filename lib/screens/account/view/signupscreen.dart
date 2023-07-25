@@ -17,13 +17,20 @@ class _SignupscreenState extends State<Signupscreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () => Get.toNamed(Signinscreen.router),
+            icon: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+            ),
+            color: Colors.black),
+        title: const Text(
+          'Sign up',
+          style: TextStyle(color: Colors.black,fontSize: 25,),
+          textAlign: TextAlign.center,
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title:
-         const Text(
-          "Sign Up",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, fontFamily: 'serif'),
-        ),
+        centerTitle: true,
       ),
       body: Container(
         height: Get.height,
@@ -61,8 +68,8 @@ class _SignupscreenState extends State<Signupscreen> {
                         if (value!.isEmpty) {
                           return 'Please enter your First name';
                         }
-                        return null;
-                      },
+                          return null;
+                       },
                     ),
 
                      SizedBox(height: Get.height * 0.04),
@@ -174,19 +181,20 @@ class _SignupscreenState extends State<Signupscreen> {
                         onPressed: (
                           
                         ) {
-                          Get.toNamed(Signinscreen.router);
-
                           controller.signup(
                               controller.email.text,
                               controller.password.text,
                               controller.firstname.text,
                               controller.lastname.text,
                               controller.confirmpassword.text);
+
+                              
                           controller.email.clear();
                           controller.password.clear();
                           controller.firstname.clear();
                           controller.lastname.clear();
                           controller.confirmpassword.clear();
+
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,

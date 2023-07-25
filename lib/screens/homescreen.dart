@@ -130,6 +130,7 @@ class _HomeScreenState extends State<HomeScreen> {
           padding: const EdgeInsets.all(15.0),
           child: Column(children: [
             const Homescreentop(),
+            
             const Homescreenbottom(
               balance: ' 10,000',
               expenses: ' 5,000',
