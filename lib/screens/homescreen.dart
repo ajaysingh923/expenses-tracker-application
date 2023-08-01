@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/screens/account/controller/homescreen_details.dart';
+import 'package:flutter_application_2/screens/account/controller/transaction_detail.dart';
 
 class HomeScreen extends StatefulWidget {
   static const router = '/HomeScreen';
@@ -138,8 +139,14 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
                 child: Container(
-              child: const Center(
-                child: Text('No Transaction History'),
+              child:  Center(
+                child: Column(
+                  children: [
+                  const SizedBox(height: 40,),
+                     Mytansaction(title: 'tuition',amount: '2000',expenseorincome: 'income',),
+                   
+                  ],
+                )
               ),
             )),
             Bottombutton(

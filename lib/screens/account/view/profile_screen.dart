@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/screens/account/controller/profile_menu.dart';
-import 'package:flutter_application_2/screens/account/view/profile_edit.dart';
+import 'package:flutter_application_2/screens/account/controller/profile_edit.dart';
 import 'package:flutter_application_2/screens/homescreen.dart';
 import 'package:get/get.dart';
 

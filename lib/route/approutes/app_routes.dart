@@ -1,4 +1,4 @@
-import 'package:flutter_application_2/screens/account/view/profile_edit.dart';
+import 'package:flutter_application_2/screens/account/controller/profile_edit.dart';
 import 'package:flutter_application_2/screens/account/view/profile_screen.dart';
 import 'package:flutter_application_2/screens/account/view/signupscreen.dart';
 import 'package:flutter_application_2/screens/homescreen.dart';
