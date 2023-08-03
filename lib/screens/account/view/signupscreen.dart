@@ -37,7 +37,7 @@ class _SignupscreenState extends State<Signupscreen> {
         width: Get.width,
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-          colors: [Colors.blue, Colors.blue, Color.fromARGB(255, 71, 143, 176)],
+          colors: [Colors.white, Color.fromARGB(255, 71, 143, 176)],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         )),
@@ -54,10 +54,10 @@ class _SignupscreenState extends State<Signupscreen> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         prefixIcon:
-                            const Icon(Icons.person, color: Colors.white),
-                        labelStyle: const TextStyle(color: Colors.white),
+                            const Icon(Icons.person, color: Colors.black54),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         labelText: 'First Name',
                         hintText: 'Enter your First Name',
                         border: OutlineInputBorder(
@@ -78,10 +78,10 @@ class _SignupscreenState extends State<Signupscreen> {
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                         prefixIcon:
-                            const Icon(Icons.person, color: Colors.white),
-                        labelStyle: const TextStyle(color: Colors.white),
+                            const Icon(Icons.person, color: Colors.black54),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         labelText: 'Last Name',
                         hintText: 'Enter your Last Name',
                         border: OutlineInputBorder(
@@ -103,10 +103,10 @@ class _SignupscreenState extends State<Signupscreen> {
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                         prefixIcon:
-                            const Icon(Icons.email, color: Colors.white),
-                        labelStyle: const TextStyle(color: Colors.white),
+                            const Icon(Icons.email, color: Colors.black54),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         labelText: 'Email',
                         hintText: 'Enter your email',
                         border: OutlineInputBorder(
@@ -127,12 +127,12 @@ class _SignupscreenState extends State<Signupscreen> {
                       controller: controller.password,
                       obscureText: true,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.black54),
                         labelText: 'Password',
                         hintText: 'Enter your password',
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -151,12 +151,12 @@ class _SignupscreenState extends State<Signupscreen> {
                       controller: controller.confirmpassword,
                       obscureText: true,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.black54),
                         labelText: 'Confirm Password',
                         hintText: 'Enter your password again',
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
@@ -197,7 +197,7 @@ class _SignupscreenState extends State<Signupscreen> {
 
                         },
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                            backgroundColor: Colors.amberAccent,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             )),
@@ -218,7 +218,7 @@ class _SignupscreenState extends State<Signupscreen> {
                       children: [
                         const Text(
                           'Already have a account?',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         ),
                         TextButton(
                             onPressed: () {
@@ -226,7 +226,7 @@ class _SignupscreenState extends State<Signupscreen> {
                             },
                             child: const Text(
                               'Log in',
-                              style: TextStyle(color: Colors.black, fontFamily: 'serif'),
+                              style: TextStyle(color: Colors.white, fontFamily: 'serif'),
                             ))
                       ],
                     )

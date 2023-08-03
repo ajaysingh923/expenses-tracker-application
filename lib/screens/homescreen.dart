@@ -142,8 +142,13 @@ class _HomeScreenState extends State<HomeScreen> {
               child:  Center(
                 child: Column(
                   children: [
-                  const SizedBox(height: 40,),
-                     Mytansaction(title: 'tuition',amount: '2000',expenseorincome: 'income',),
+                    const SizedBox(height: 40,),
+                    const Text('Recent Transactions',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
+                  const SizedBox(height: 20,),
+                     Mytansaction(title: '',amount: '',expenseorincome: '',),
+                    
+                 
+                  
                    
                   ],
                 )

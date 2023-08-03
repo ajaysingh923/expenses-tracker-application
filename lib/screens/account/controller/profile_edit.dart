@@ -52,9 +52,10 @@ class EditProfile extends StatelessWidget {
                             shape: BoxShape.circle,
                             color: Colors.blue,
                           ),
-                          child: const Icon(
-                            Icons.camera_enhance_outlined,
+                          child: IconButton(
+                            icon: const Icon(Icons.camera_enhance_outlined),
                             color: Colors.white,
+                            onPressed: () {},
                           ),
                         ),
                       ),

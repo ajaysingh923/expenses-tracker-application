@@ -20,7 +20,9 @@ class _SigninscreenState extends State<Signinscreen> {
         height: Get.height,
         width: Get.width, 
         decoration:const BoxDecoration(
-          gradient:LinearGradient(colors: [Colors.blue,Colors.blue,Color.fromARGB(255, 71, 143, 176)],
+          gradient:LinearGradient(colors: [Colors.white,
+            Color.fromARGB(255, 71, 143, 176)
+          ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           )),
@@ -32,20 +34,25 @@ class _SigninscreenState extends State<Signinscreen> {
                 key: controller.formKey,
                 child: Column(
                   children: [
-                    SizedBox(height: Get.height * 0.04),
-                    Center(
-                      child: Image(
-                          height: Get.height * 0.1,
-                          width: Get.width * 0.3,
-                          image: const AssetImage('assets/images/logo.png')),    
+                    SizedBox(height: Get.height * 0.1),
+                  const  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                         Image(
+                          image: AssetImage('assets/images/logo.png'),
+                          height: 80,
+                          width: 80,
+                        ),
+                         Text('Expenses tracker',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold)),
+                      ],
                     ),
-                    SizedBox(height: Get.height * 0.02),
-                    const Text('Expenses Tracker',
-                    style:  TextStyle(
-                    color: Colors.black87,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'serif')),
+
+
+
 
                     SizedBox(height: Get.height * 0.01),
                     const Text('Empower Your Finances, Track Your Expenses!',
@@ -59,10 +66,10 @@ class _SigninscreenState extends State<Signinscreen> {
                       controller: controller.email,
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.email, color: Colors.white),
-                        labelStyle: const TextStyle(color: Colors.white),
+                        prefixIcon: const Icon(Icons.email, color: Colors.black54),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
                         labelText: 'Email',
                         hintText: 'Enter your email',
                         border: OutlineInputBorder(
@@ -83,12 +90,12 @@ class _SigninscreenState extends State<Signinscreen> {
                       controller: controller.password,
                       obscureText: true,
                       decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                        prefixIcon: const Icon(Icons.lock, color: Colors.black54),
                         labelText: 'Password',
                         hintText: 'Enter your password',
-                        labelStyle: const TextStyle(color: Colors.white),
+                        labelStyle: const TextStyle(color: Colors.black54),
                         filled: true,
-                        fillColor: Colors.white.withOpacity(0.3),
+                        fillColor: Colors.white.withOpacity(0.5),
 
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
@@ -117,7 +124,7 @@ class _SigninscreenState extends State<Signinscreen> {
                           controller.password.clear();
                         },
                          style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.amberAccent,
                             shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
                         )),
@@ -130,13 +137,15 @@ class _SigninscreenState extends State<Signinscreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Text('Don\'t have a account?',
-                          style: TextStyle(color: Colors.white,),
+                          style: TextStyle(color: Colors.black,),
                         ),
                         TextButton(
                             onPressed: () {
                               Get.toNamed(Signupscreen.router);
                             },
-                            child: const Text('Sign Up', style: TextStyle(color: Colors.black,fontFamily: 'serif'),))
+                            child: const Text('Sign Up', style: TextStyle(color: Colors.white,fontFamily: 'serif',
+                                decoration: TextDecoration.underline,
+                              ),))
                       ],
                     ),
 

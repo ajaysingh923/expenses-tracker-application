@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screens/account/controller/contact_us.dart';
+import 'package:flutter_application_2/screens/account/controller/darkmode/darkmode_select.dart';
 import 'package:flutter_application_2/screens/account/controller/profile_menu.dart';
 import 'package:flutter_application_2/screens/account/controller/profile_edit.dart';
 import 'package:flutter_application_2/screens/homescreen.dart';
@@ -59,9 +61,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shape: BoxShape.circle,
                         color: Colors.blue,
                       ),
-                      child: const Icon(
-                        Icons.camera_enhance_outlined,
+                      child: IconButton(
+                        icon: const Icon(Icons.camera_enhance_outlined),
                         color: Colors.white,
+                        onPressed: () {},
                       ),
                     ),
                   ),
@@ -77,13 +80,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () 
-                    => Get.to(() => const EditProfile()),
-                  
+                  onPressed: () => Get.to(() => const EditProfile()),
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.amberAccent,
-                      side: BorderSide.none,
-                      shape: const StadiumBorder()),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20))),
                   child: const Text('EditProfile',
                       style: TextStyle(color: Colors.black)),
                 ),
@@ -91,19 +92,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const SizedBox(height: 30),
               const Divider(),
               const SizedBox(height: 20),
-
-            ProfileMenuWidget(
+              ProfileMenuWidget(
                   title: "User Information",
                   icon: Icons.person,
                   onPress: () {}),
               const SizedBox(height: 20),
-
               ProfileMenuWidget(
-                  title: "Theme", icon: Icons.sunny, onPress: () {}),
+                  title: "Theme",
+                  icon: Icons.sunny,
+                  onPress: () {
+                    Get.toNamed(DarkButton.router);
+                  }),
               const SizedBox(height: 20),
-              
               ProfileMenuWidget(
-                  title: "About us", icon: Icons.info, onPress: () {}),
+                  title: "Contact Us",
+                  icon: Icons.call_made_outlined,
+                  onPress: () {
+                    Get.toNamed(Contactus.router);
+                  }),
               const SizedBox(height: 20),
               ProfileMenuWidget(
                   title: "Logout",
