@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_2/screens/account/controller/googleshets.dart';
 import 'package:flutter_application_2/screens/account/controller/homescreen_details.dart';
+import 'package:flutter_application_2/screens/account/controller/loading.dart';
 import 'package:flutter_application_2/screens/account/controller/transaction_detail.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
   bool _isIncome = false;
   final _formKey = GlobalKey<FormState>();
   final amount = TextEditingController();
-  final name = TextEditingController();
+  final title = TextEditingController();
+
+  void entertransaction(){
+    GoogleSheetsApi.insert(title.text, amount.text, _isIncome);
+    setState(() {});
+  }
 
   void newTransaction() {
     showDialog(
@@ -61,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               decoration: const InputDecoration(
                                 hintText: 'Title',
                               ),
-                              controller: name,
+                              controller: title,
                             ),
                           ),
                         ],
@@ -100,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       Navigator.of(context).pop();
-                      name.clear();
+                      title.clear();
                       amount.clear();
                     },
                   ),
@@ -110,8 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(color: Colors.white)),
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
+                        entertransaction();
                         Navigator.of(context).pop();
-                        name.clear();
+                        title.clear();
                         amount.clear();
                       }
                     },
@@ -132,27 +140,46 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(children: [
             const Homescreentop(),
             
-            const Homescreenbottom(
-              balance: ' 10,000',
-              expenses: ' 5,000',
-              income: ' 15,000',
+             Homescreenbottom(
+              balance: (GoogleSheetsApi.calculateIncome() - GoogleSheetsApi.calculateExpense()).toString(),
+              expenses:  GoogleSheetsApi.calculateExpense().toString(),
+              income: GoogleSheetsApi.calculateIncome().toString(),
             ),
             Expanded(
                 child: Container(
-              child:  Center(
-                child: Column(
-                  children: [
-                    const SizedBox(height: 40,),
-                    const Text('Recent Transactions',style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
-                  const SizedBox(height: 20,),
-                     Mytansaction(title: '',amount: '',expenseorincome: '',),
-                    
-                 
+              child: Center(
+                  child: Column(
+                children: [
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  const Text(
+                    'Recent Transactions',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 2,
+                  ),
                   
-                   
-                  ],
-                )
-              ),
+                  Expanded(
+                      child: GoogleSheetsApi.loading == true
+                          ?const Loading()
+                          : ListView.builder(
+                              itemCount:
+                                  GoogleSheetsApi.currentTransactions.length,
+                              itemBuilder: (context, index) {
+                                return Mytansaction(
+                                  title: GoogleSheetsApi
+                                      .currentTransactions[index][0],
+                                  amount: GoogleSheetsApi
+                                      .currentTransactions[index][1],
+                                  expenseorincome: GoogleSheetsApi
+                                      .currentTransactions[index][2],
+                                );
+                                
+                              }))
+                ],
+              )),
             )),
             Bottombutton(
               function: newTransaction,

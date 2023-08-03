@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,31 +10,28 @@ class Homescreentop extends StatelessWidget {
       height: 105,
       padding: const EdgeInsets.fromLTRB(10, 25, 0, 0),
       color: Colors.white,
-      
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           const Row(
-             children: [
-               Text('hello, ',
+            children: [
+              Text('hello, ',
                   textAlign: TextAlign.start,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-             ],
-           ),
+            ],
+          ),
           Row(
-           children: [
-            IconButton(
-                icon:const CircleAvatar(
+            children: [
+              IconButton(
+                icon: const CircleAvatar(
                   backgroundImage: ExactAssetImage('assets/images/ajay.png'),
                 ),
-
-                onPressed: (){
+                onPressed: () {
                   Get.offAndToNamed('/ProfileScreen');
                 },
               )
-           ],
+            ],
           ),
-           
         ],
       ),
     );
@@ -54,10 +50,11 @@ class Homescreenbottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-            padding:const EdgeInsets.fromLTRB(0, 0, 0, 0),        child: Container(
+        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+        child: Container(
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey[300],
+              color: Color.fromARGB(255, 71, 143, 176),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.shade700,
@@ -93,8 +90,8 @@ class Homescreenbottom extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            padding:const EdgeInsets.all(10),
-                            decoration:const BoxDecoration(
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.white,
                             ),
@@ -111,15 +108,16 @@ class Homescreenbottom extends StatelessWidget {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                             const Text('Expense',
-                                  style: TextStyle(color:Colors.black)),
+                              const Text('Expense',
+                                  style: TextStyle(color: Colors.black)),
                               const SizedBox(
                                 height: 5,
                               ),
                               Text('\₹' + expenses,
                                   style: TextStyle(
                                       color: Colors.redAccent,
-                                      fontWeight: FontWeight.bold)),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17)),
                             ],
                           )
                         ],
@@ -127,8 +125,8 @@ class Homescreenbottom extends StatelessWidget {
                       Row(
                         children: [
                           Container(
-                            padding:const EdgeInsets.all(10),
-                            decoration:const BoxDecoration(
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.white,
                             ),
@@ -152,8 +150,10 @@ class Homescreenbottom extends StatelessWidget {
                               ),
                               Text('\₹' + income,
                                   style: TextStyle(
-                                      color: Colors.green,
-                                      fontWeight: FontWeight.bold)),
+                                      color: const Color.fromARGB(
+                                          255, 133, 208, 136),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17)),
                             ],
                           )
                         ],
@@ -168,29 +168,23 @@ class Homescreenbottom extends StatelessWidget {
   }
 }
 
-
-
 class Bottombutton extends StatelessWidget {
   final function;
 
-  Bottombutton({this.function});
+  const Bottombutton({this.function});
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: function,
-      child: Container(
-        height: 65,
-        width: 65,
-        decoration:const BoxDecoration(
-          color: Colors.green,
-          shape: BoxShape.circle,
+    return CircleAvatar(
+      radius: 30,
+      backgroundColor: Colors.green,
+      child: IconButton(
+        icon: const Icon(
+          Icons.add_card,
+          color: Colors.black,
         ),
-        child:const Center(
-          child: Icon( Icons.add_card, color: Colors.white, size: 30)
-        ),
+        onPressed: function,
       ),
     );
   }
 }
-

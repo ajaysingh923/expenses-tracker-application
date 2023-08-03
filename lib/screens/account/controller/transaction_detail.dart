@@ -14,9 +14,12 @@ class Mytansaction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(30),
         child: Container(
             padding: const EdgeInsets.all(10),
+            margin: EdgeInsets.fromLTRB(0,5,0,5),
+            
+            
             color: Colors.grey[300],
             height: 50,
             child: Center(
@@ -27,30 +30,34 @@ class Mytansaction extends StatelessWidget {
                   children: [
                     Container(
                         padding: const EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey[400],
-                        ),
-                        child: const Center(
+                        child:  Center(
                           child: Icon(
                             Icons.attach_money_outlined,
-                            color: Colors.white,
+                            color: expenseorincome == 'expense'
+                          ? Colors.red
+                          : Colors.green
                           ),
                         )),
                     const SizedBox(
                       width: 10,
                     ),
                     Text(title, style: const TextStyle(fontSize: 15)),
+                        
                   ],
                 ),
                 Text(
-                  (expenseorincome == 'expense' ? '-' : '+') + '\$' + amount,
+                  (expenseorincome == 'expense' ? '-' : '+') + '\₹' + amount,
                   style: TextStyle(
                       color: expenseorincome == 'expense'
                           ? Colors.red
                           : Colors.green),
-                )
+                ),
+                
               ],
+              
             ))));
   }
 }
+
+
+
