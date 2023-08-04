@@ -6,6 +6,8 @@ import 'package:flutter_application_2/screens/account/controller/profile_edit.da
 import 'package:flutter_application_2/screens/homescreen.dart';
 import 'package:get/get.dart';
 
+import '../controller/account_controller.dart';
+
 class ProfileScreen extends StatefulWidget {
   static const router = '/ProfileScreen';
 
@@ -16,8 +18,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+   final Account controller = Get.put(Account());
   @override
   Widget build(BuildContext context) {
+    controller.getCurrentUserDetail();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -71,11 +75,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ],
               ),
               const SizedBox(height: 10),
-              const Text('Marshell D. Teach',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+               Text(controller.userFullname,
+                  style:const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 5),
-              const Text('a@gmail.com',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+               Text(controller.userEmail,
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
               SizedBox(
                 width: 200,

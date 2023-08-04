@@ -11,7 +11,10 @@ class Account extends GetxController {
   var lastname = TextEditingController();
   var password = TextEditingController();
   var confirmpassword = TextEditingController();
-
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  String userid = '';
+  String userEmail = '';
+  String userFullname = '';
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   void initState() {
     email = TextEditingController();
@@ -54,7 +57,7 @@ class Account extends GetxController {
         await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
         addUserDetails(firstname, lastname, email);
-        
+
         FirebaseAuth.instance.currentUser!.updateDisplayName(firstname);
         Get.offAndToNamed(Signinscreen.router);
         Get.snackbar('Success', 'Signup Successfully',
@@ -79,5 +82,11 @@ class Account extends GetxController {
       'lastname': lastname,
       'email': email,
     });
+  }
+  getCurrentUserDetail() async {
+    final User? user = _auth.currentUser;
+    userid = user!.uid.toString();
+    userEmail = user.email.toString();
+    userFullname = user.displayName.toString();
   }
 }

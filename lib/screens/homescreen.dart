@@ -138,7 +138,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(children: [
-            const Homescreentop(),
+             Homescreentop(),
             
              Homescreenbottom(
               balance: (GoogleSheetsApi.calculateIncome() - GoogleSheetsApi.calculateExpense()).toString(),

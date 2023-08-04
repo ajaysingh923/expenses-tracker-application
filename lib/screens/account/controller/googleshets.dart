@@ -18,7 +18,6 @@ class GoogleSheetsApi {
   
   }
   ''';
-
   static const spreadsheetId = '1cbkjPLmou0HHlLODgwdnpx3tRIDPur6h7Rcr3wyDYfA';
   static final gsheets = GSheets(credentials);
   static Worksheet? worksheet;

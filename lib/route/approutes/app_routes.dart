@@ -1,6 +1,7 @@
 import 'package:flutter_application_2/screens/account/controller/contact_us.dart';
 import 'package:flutter_application_2/screens/account/controller/darkmode/darkmode_select.dart';
 import 'package:flutter_application_2/screens/account/controller/profile_edit.dart';
+import 'package:flutter_application_2/screens/account/controller/userdetails.dart';
 import 'package:flutter_application_2/screens/account/view/profile_screen.dart';
 import 'package:flutter_application_2/screens/account/view/signupscreen.dart';
 import 'package:flutter_application_2/screens/homescreen.dart';
@@ -15,6 +16,7 @@ appRoutes() => [
       GetPage(name: EditProfile.router, page: () => const EditProfile()),
       GetPage(name:Contactus.router,page:()=>const Contactus()),
             GetPage(name: DarkButton.router, page: () => const DarkButton()),
+            GetPage(name: UserDetails.router, page: () => const UserDetails()),
 
 
 

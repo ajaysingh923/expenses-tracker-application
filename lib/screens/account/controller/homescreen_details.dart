@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Homescreentop extends StatelessWidget {
-  const Homescreentop({super.key});
+import 'account_controller.dart';
 
+class Homescreentop extends StatelessWidget {
+  Homescreentop({super.key});
+  final Account controller = Get.put(Account());
   @override
   Widget build(BuildContext context) {
+    controller.getCurrentUserDetail();
     return Container(
       height: 105,
       padding: const EdgeInsets.fromLTRB(10, 25, 0, 0),
@@ -13,11 +16,11 @@ class Homescreentop extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Row(
+           Row(
             children: [
-              Text('hello, ',
+              Text('Hello, ${controller.userFullname.toUpperCase()}!',
                   textAlign: TextAlign.start,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
             ],
           ),
           Row(
