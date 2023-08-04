@@ -45,9 +45,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
-              Stack(
+            const  Stack(
                 children: [
-                  const SizedBox(
+                   SizedBox(
                     width: 120,
                     height: 120,
                     child: CircleAvatar(
@@ -55,23 +55,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ExactAssetImage('assets/images/ajay.png'),
                     ),
                   ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.blue,
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.camera_enhance_outlined),
-                        color: Colors.white,
-                        onPressed: () {},
-                      ),
-                    ),
-                  ),
+                  // Positioned(
+                  //   bottom: 0,
+                  //   right: 0,
+                  //   child: Container(
+                  //     height: 40,
+                  //     width: 40,
+                  //     decoration: const BoxDecoration(
+                  //       shape: BoxShape.circle,
+                  //       color: Colors.blue,
+                  //     ),
+                  //     child: IconButton(
+                  //       icon: const Icon(Icons.camera_enhance_outlined),
+                  //       color: Colors.white,
+                  //       onPressed: () {},
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -95,19 +95,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               const SizedBox(height: 30),
               const Divider(),
-              const SizedBox(height: 20),
-              ProfileMenuWidget(
-                  title: "User Information",
-                  icon: Icons.person,
-                  onPress: () {}),
-              const SizedBox(height: 20),
-              ProfileMenuWidget(
-                  title: "Theme",
-                  icon: Icons.sunny,
-                  onPress: () {
-                    Get.toNamed(DarkButton.router);
-                  }),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
+              // ProfileMenuWidget(
+              //     title: "Theme",
+              //     icon: Icons.sunny,
+              //     onPress: () {
+              //       Get.toNamed(DarkButton.router);
+              //     }),
+              // const SizedBox(height: 20),
               ProfileMenuWidget(
                   title: "Contact Us",
                   icon: Icons.call_made_outlined,
